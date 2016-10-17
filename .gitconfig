@@ -1,0 +1,8 @@
+[user]
+	email = roy.kokkelkoren@gmail.com
+	name = Roy Kokkelkoren
+	signingkey = 456FA287
+[core]
+	editor = vim
+[commit]
+	gpgsign = true

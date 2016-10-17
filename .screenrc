@@ -1,0 +1,21 @@
+# .screenrc
+# Basic
+startup_message off
+vbell           off
+defscrollback   10000
+
+# status
+hardstatus alwayslastline "%{= kw}%{y}[%{w}%H%{y}]%{Y} %{y}[%=%{ =kw}%{w}%-w%{Y}[%{W}%n-%t%{Y}]%{w}%+w%=%{y}][%{w}%l%{y}][%{w}%m-%d %{Y}%c%{y}]"
+
+# add caption
+caption splitonly "%{= kw}%?%-Lw%?%{kw}%n*%t%f %?(%u)%?%{= kw}%?%+Lw%?"
+
+
+# Autostart
+screen -t zsh 1
+screen -t zsh 2
+screen -t mc 6 mc
+screen -t htop 7 htop
+screen -t auth 8 bash -c "sudo tail -f -n 300 /var/log/secure | ccze"
+screen -t messages 9 bash -c "sudo tail -f -n 300 /var/log/messages | ccze"
+screen -t zsh 0
