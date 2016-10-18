@@ -38,12 +38,12 @@ alias yum-info='sudo yum info'
 alias yum-clean='sudo yum clean all'
 
 # Apt package manager
-alias apt-install='sudo apt-get install'
-alias apt-remove='sudo apt-get purge'
-alias apt-update='sudo apt-get update && sudo apt-get upgrade -y'
-alias apt-search='sudo apt-cache search'
-alias apt-show='sudo apt-cache show'
-alias apt-list='sudo dpkg --get-selections'
+alias apt-install='sudo apt install'
+alias apt-remove='sudo apt remove'
+alias apt-update='sudo apt update'
+alias apt-search='apt search'
+alias apt-show='apt show'
+alias apt-list='apt list'
 alias apt-clean='sudo apt-get autoremove'
 
 # Global aliases
