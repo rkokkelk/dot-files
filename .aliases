@@ -12,7 +12,7 @@ alias reboot='sudo reboot'
 alias service='sudo service'
 alias umount='sudo umount'
 alias screen='screen -D -R'
-alias t='/home/rk/.todo/todo.sh'
+alias t='$HOME/.todo/todo.sh'
 
 # Package manager
 alias pac-install='sudo pacman -S'
@@ -57,4 +57,4 @@ alias -g JS='| python -mjson.tool'
 alias grep='grep --color=always'
 
 # Tmux
-alias tmux='/home/rk/.tmux/default.sh'
+alias tmux='$HOME/.tmux/default.sh'
