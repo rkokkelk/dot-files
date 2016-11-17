@@ -1,13 +1,9 @@
 #!/bin/bash
 
-# Read config file
-source $HOME/.duplicity/backup.conf
-
 # Default values
 TIME=""
 OUT=$(mktemp)
-DEST="${DIR}/backup"
-TITLE="Backup desktop"
+TITLE="Backup-Desktop"
 
 function show_help {
   echo 'backup [-f] [-h] [-t] [-d] [clean|list|restore|verify]'
@@ -35,7 +31,7 @@ while getopts "bhmd:f:t:" opt; do
       ;;
     m)
       DIR=/home/doortje
-      TITLE="Backup Doortje"
+      TITLE="Backup-Doortje"
       URL=$URL_DOOR
       ;;
     t)
@@ -54,6 +50,16 @@ while getopts "bhmd:f:t:" opt; do
   esac
 done
 
+# Read config file
+if [ -f $HOME/.duplicity/backup.conf ]
+then
+  source $HOME/.duplicity/backup.conf  
+else
+  echo "[WARN] $HOME/.duplicity/backup.conf file not found!"
+  exit 1
+fi
+
+# Send Pushover message
 if [ $DAEMON ]
 then
   pushover -t $TITLE 'Backup started'
