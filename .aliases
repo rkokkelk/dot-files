@@ -21,6 +21,7 @@ alias pac-remove-all='sudo pacman -Rscn'
 alias pac-update='sudo pacman -Syu'
 alias pac-search='sudo pacman -Ss'
 alias pac-show='sudo pacman -Si'
+alias pac-clean='sudo pacman -Sc'
 
 # Yaourt Package manager
 alias yao-install='yaourt -S --noconfirm'
