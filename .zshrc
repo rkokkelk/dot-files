@@ -9,6 +9,13 @@ PATH=$PATH:$HOME/.bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:/ho
 export EDITOR=vim
 eval `dircolors -b`
 
+#############
+# OH-MY-ZSH #
+#############
+export ZSH=/home/rk/.oh-my-zsh
+plugins=(git pep8 pylint gpg-agent ssh-agent tmux command-not-found compleat zsh-syntax-highlighting zsh-autosuggestions)
+source $ZSH/oh-my-zsh.sh
+
 ###########
 # Options #
 ###########
@@ -104,7 +111,7 @@ fi
 # Syntaxt Highlighting #
 ########################
 
-#ZSH_HIGHLIGHT_STYLES[default]='fg=white'
+ZSH_HIGHLIGHT_STYLES[default]='fg=white'
 
 ############
 # BindKeys #
