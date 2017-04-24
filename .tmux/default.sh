@@ -5,6 +5,7 @@ if [ $# -gt 0 ]; then
   tmux $@
 else
   tmux new-session -d 'zsh'
+  tmux new-window -t 6 'irssi'
   tmux new-window -t 7 'mc'
   tmux new-window -t 8 'htop'
   tmux new-window -t 9 -n 'logs' 'tail -f -n 50 /var/log/auth.log | ccze'
