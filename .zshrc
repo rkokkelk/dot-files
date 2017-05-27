@@ -1,20 +1,26 @@
 #############
 # Variables #
 #############
-HISTFILE=~/.zsh/zsh_history
+HISTFILE=$HOME/.zsh/zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 TERM='xterm-256color'
 PATH=$PATH:$HOME/.bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$HOME/.gem/ruby/2.4.0/bin
+
 export EDITOR=vim
 eval `dircolors -b`
 
 #############
 # OH-MY-ZSH #
 #############
-export ZSH=/home/rk/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 plugins=(git pep8 pylint gpg-agent ssh-agent tmux command-not-found compleat zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
+
+#######
+# RVM #
+#######
+source $HOME/.rvm/
 
 ###########
 # Options #
@@ -165,22 +171,6 @@ vi(){
 	fi
 }
 
-snt-mount(){
-	SAVE_DIR="/home/rk/Documents/UTwente/Unions/SNT/snt-archive"
-
-	if [ ! -d $SAVE_DIR ]; then 
-		mkdir $SAVE_DIR
-	fi 
-
-	#USER=rkokkelk@snt mount $SAVE_DIR
-	USER=bestuur@snt mount $SAVE_DIR
-	if [ $? -eq 0 ]; then
-		echo "Mount successfull"
-	else
-		echo "Mount not successfull"
-	fi
-}
-
 # List content after changing directory
 cd(){
   if [ -n "$1" ]; then
@@ -240,4 +230,3 @@ exip () {
     echo -n "Current External IP: "
     curl -s -m 5 http://myip.dk | grep "ha4" | sed -e 's/.*ha4">//g' -e 's/<\/span>.*//g'
 }
-
