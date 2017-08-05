@@ -14,6 +14,7 @@ function show_help {
   echo '-m :       Backup Doortje directory'
   echo ''
   echo 'restore :  Restore files from backup'
+  echo 'full    :  Perfom full backup of all files'
   echo 'clean   :  Clean backup directory from outdated backup files'
   echo 'list    :  List files currently in backup'
 }
@@ -71,6 +72,10 @@ export FTP_PASSWORD=$(zenity --password --title='Enter STACK password' 2> /dev/n
 case ${@: -1} in
   "list")
     duplicity list-current-files $TIME --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL
+    ;;
+  "full")
+    duplicity full --allow-source-mismatch --asynchronous-upload --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY --exclude-filelist=${DIR}/.duplicity/exclude.lst $DIR $URL 2>&1 | tee $OUT
+    duplicity remove-older-than 6M --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee $OUT 
     ;;
   "clean")
     duplicity cleanup --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL
