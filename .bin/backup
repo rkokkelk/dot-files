@@ -19,6 +19,15 @@ function show_help {
   echo 'list    :  List files currently in backup'
 }
 
+# Read config file
+if [ -f $HOME/.duplicity/backup.conf ]
+then
+  source $HOME/.duplicity/backup.conf  
+else
+  echo "[WARN] $HOME/.duplicity/backup.conf file not found!"
+  exit 1
+fi
+
 while getopts "bhmd:f:t:" opt; do
   case $opt in
     b)
@@ -50,15 +59,6 @@ while getopts "bhmd:f:t:" opt; do
       ;;
   esac
 done
-
-# Read config file
-if [ -f $HOME/.duplicity/backup.conf ]
-then
-  source $HOME/.duplicity/backup.conf  
-else
-  echo "[WARN] $HOME/.duplicity/backup.conf file not found!"
-  exit 1
-fi
 
 # Send Pushover message
 if [ $DAEMON ]
