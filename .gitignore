@@ -3,4 +3,5 @@
 .irssi
 
 .zsh/zsh_history
+.zsh/cache
 .vim/bundle/indenthl
