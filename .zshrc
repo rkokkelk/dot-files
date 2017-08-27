@@ -20,7 +20,11 @@ source $ZSH/oh-my-zsh.sh
 #######
 # RVM #
 #######
-source $HOME/.rvm/scripts/rvm
+RVM="$home/.rvm/scripts/rvm"
+if [ -e $RVM ]
+then
+  source $RVM
+fi
 
 ###########
 # Options #
