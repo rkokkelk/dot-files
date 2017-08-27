@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Install files
+MIN_INSTALL="htop mc iotop python3 terminator vim zsh"
+SMARTCARD_INSTALL="pcsclite pinentry ccid pcsc-tools scdaemon"
+
+function show_help {
+  echo 'new-install [smartcard]'
+  echo '-h :       Show this help'
+  echo ''
+  echo 'smartcard :  Install required packages for PGP smartcard and U2F functionality'
+}
+
+if [ "$(id -u)" != "0" ]
+then
+  echo "[WARN] Not root user!"
+  exit 1
+fi
+
+while getopts "h" opt; do
+  case $opt in
+    h)
+      show_help
+      exit 0
+      ;;
+    \?)
+      show_help
+      exit 1
+      ;;
+  esac
+done
+
+
+# Arch system
+if [ -x /usr/bin/pacman ]
+then
+  P_MANAGER="/usr/bin/pacman -S"
+# DPKG (Debian, Ubuntu, etc)
+elif [ -x /usr/bin/apt ] 
+then
+  P_MANAGER="/usr/bin/apt install"
+# RPM (Centos, Red Hat)
+elif [ -x /usr/bin/yum ] 
+then
+  P_MANAGER="/usr/bin/yum install"
+fi
+
+case ${@: -1} in
+  "smartcard")
+    $P_MANAGER $SMARTCARD_INSTALL
+    ;;
+  *)
+    $P_MANAGER $MIN_INSTALL
+    ;;
+esac
+exit 0
