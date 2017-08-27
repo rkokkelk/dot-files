@@ -75,7 +75,7 @@ case ${@: -1} in
     ;;
   "full")
     duplicity full --gpg-binary=$BIN --allow-source-mismatch --asynchronous-upload --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY --exclude-filelist=${DIR}/.duplicity/exclude.lst $DIR $URL 2>&1 | tee -a $OUT
-    duplicity remove-older-than 6M --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee $OUT 
+    duplicity remove-older-than 6M --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee -a $OUT 
     ;;
   "clean")
     duplicity cleanup --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL
@@ -88,7 +88,7 @@ case ${@: -1} in
   ;;
   *)
     duplicity --gpg-binary=$BIN --allow-source-mismatch --asynchronous-upload --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY --full-if-older-than 4M --exclude-filelist=${DIR}/.duplicity/exclude.lst $DIR $URL 2>&1 | tee -a $OUT
-    duplicity remove-older-than 6M --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee $OUT 
+    duplicity remove-older-than 6M --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee -a $OUT 
   ;;
 esac
 
