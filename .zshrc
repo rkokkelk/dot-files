@@ -14,7 +14,7 @@ eval `dircolors -b`
 # OH-MY-ZSH #
 #############
 export ZSH=$HOME/.oh-my-zsh
-plugins=(git pep8 pylint gpg-agent ssh-agent tmux command-not-found compleat zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git pep8 pylint gpg-agent tmux command-not-found compleat zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 #######
