@@ -17,15 +17,19 @@ export ZSH=$HOME/.oh-my-zsh
 plugins=(git pep8 pylint gpg-agent tmux command-not-found compleat zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
-#############
-# SSH-Agent #
-#############
+#################
+# GPG/SSH Agent #
+#################
 unset SSH_AGENT_PID
 if [ -S "/run/user/$UID/gnupg/S.gpg-agent.ssh" ]; then
   export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 else
   export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
+
+# Refresh gpg-agent tty in case user switches into an X session
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
 
 #######
 # RVM #
