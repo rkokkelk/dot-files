@@ -10,7 +10,7 @@ function show_help {
   echo 'backup [-f] [-h] [-t] [-d] [clean|list|restore|verify]'
   echo '-h :       Show this help'
   echo '-f :       Specify files to use to restore'
-  echo '-t :       Specify time range to use, e.g. 1w 2m [list|restore]'
+  echo '-t :       Specify time range to use, e.g. 1W 2M [list|restore]'
   echo '-d :       Specify target directory, default: restore_$timestamp$ [restore]'
   echo '-m :       Backup Doortje directory'
   echo ''
