@@ -198,6 +198,25 @@ cd(){
   fi
 }
 
+git-verify(){
+	declare -i total=0
+	declare -i scount=0
+	declare - i incount=0
+	branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+	for commit in $(git rev-list $branch)
+	do
+		git verify-commit $commit > /dev/null  2>&1
+		if [ $? -eq 0 ]; then
+			scount=$((scount + 1))
+		else
+			incount=$((incount + 1))
+		fi
+	done
+
+	total=$((scount + incount))
+	echo "V: $scount / U: $incount / T: $total"
+}
+
 svns(){
   PWD=${!#}
   
