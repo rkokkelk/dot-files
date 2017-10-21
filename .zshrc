@@ -79,7 +79,7 @@ zstyle ':vcs_info:git*' formats "%{$fg[white]%}[%{$fg[blue]%}%b%{$reset_color%}%
 # Completion #
 ##############
 
-zstyle ':compinstall filename' '/home/roy/.zshrc'
+zstyle ':compinstall filename' "$HOME/.zshrc"
 zstyle ':completion:*:descriptions' format '%U%B%d%b%u'
 zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
 zstyle ':completion:*' menu select=2 
