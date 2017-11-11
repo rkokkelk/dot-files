@@ -10,6 +10,18 @@ PATH=$PATH:$HOME/.bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$HO
 export EDITOR=vim
 eval `dircolors -b`
 
+###########
+# Options #
+###########
+setopt +o nomatch
+setopt hist_ignore_dups
+setopt appendhistory 
+setopt autocd 
+setopt extendedglob 
+setopt correctall 
+setopt interactivecomments
+unsetopt beep
+
 #############
 # OH-MY-ZSH #
 #############
@@ -20,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 #################
 # GPG/SSH Agent #
 #################
-SSH_FORWARD=$(ls /tmp/ssh-*/agent*)
+SSH_FORWARD=$(ls /tmp/ssh-*/agent* 2>/dev/null)
 
 unset SSH_AGENT_PID
 if [ -S "/run/user/$UID/gnupg/S.gpg-agent.ssh" ]; then
@@ -44,16 +56,6 @@ then
   source $RVM
 fi
 
-###########
-# Options #
-###########
-setopt hist_ignore_dups
-setopt appendhistory 
-setopt autocd 
-setopt extendedglob 
-setopt correctall 
-setopt interactivecomments
-unsetopt beep
 
 #########
 # Regex #
