@@ -20,9 +20,13 @@ source $ZSH/oh-my-zsh.sh
 #################
 # GPG/SSH Agent #
 #################
+SSH_FORWARD=$(ls /tmp/ssh-*/agent*)
+
 unset SSH_AGENT_PID
 if [ -S "/run/user/$UID/gnupg/S.gpg-agent.ssh" ]; then
   export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+elif [ ! -z $SSH_FORWARD ]; then
+  export SSH_AUTH_SOCK=$SSH_FORWARD
 else
   export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
