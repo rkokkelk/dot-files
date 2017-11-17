@@ -184,6 +184,16 @@ extract () {
   fi
 }
 
+# Shortcut for bro-cut
+bro-ct(){
+ cat $1 | bro-cut -d ${@:2}
+}
+
+# Shortcut for showing bro-fields in file
+bro-fields(){
+  head -n 7 $1 | tail -1
+}
+
 # Check if sudo is needed
 vi(){
   if [ ! -f $1 ]; then
