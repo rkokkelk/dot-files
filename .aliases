@@ -53,7 +53,8 @@ alias apt-clean='sudo apt-get autoremove'
 alias -g G='| egrep --color=always'
 alias -g T='| tail'
 alias -g L='| less -R'
-#alias -g C='| ccze'
+alias -g W='| wc -l'
+alias -g C='| ccze'
 alias -g JS='| python -mjson.tool'
 
 # Grep
