@@ -12,6 +12,7 @@ alias reboot='sudo reboot'
 alias service='sudo service'
 alias systemctl='sudo systemctl'
 alias umount='sudo umount'
+alias usermount='sudo mount -o uid=$UID,gid=$GID'
 alias screen='screen -D -R'
 alias t='$HOME/.todo/todo.sh'
 
@@ -52,7 +53,8 @@ alias apt-clean='sudo apt-get autoremove'
 alias -g G='| egrep --color=always'
 alias -g T='| tail'
 alias -g L='| less -R'
-#alias -g C='| ccze'
+alias -g W='| wc -l'
+alias -g C='| ccze'
 alias -g JS='| python -mjson.tool'
 
 # Grep
