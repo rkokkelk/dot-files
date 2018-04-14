@@ -79,7 +79,7 @@ case ${@: -1} in
     echo "Performing full backup"
     duplicity full --gpg-binary=$BIN --allow-source-mismatch --asynchronous-upload --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY --exclude-filelist=${DIR}/.duplicity/exclude.lst $DIR $URL 2>&1 | tee -a $OUT
     echo "Removing old backups"
-    duplicity remove-older-than 6M --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee -a $OUT 
+    duplicity remove-older-than 1Y --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee -a $OUT 
     ;;
   "clean")
     echo "Cleaning backup"
@@ -101,7 +101,7 @@ case ${@: -1} in
     echo "Performing incremental backup"
     duplicity --gpg-binary=$BIN --allow-source-mismatch --asynchronous-upload --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY --full-if-older-than 6M --exclude-filelist=${DIR}/.duplicity/exclude.lst $DIR $URL 2>&1 | tee -a $OUT
     echo "Removing old backups"
-    duplicity remove-older-than 6M --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee -a $OUT 
+    duplicity remove-older-than 1Y --gpg-binary=$BIN --force --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL 2>&1 | tee -a $OUT 
   ;;
 esac
 
