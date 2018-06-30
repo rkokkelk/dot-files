@@ -98,6 +98,12 @@ case ${@: -1} in
     duplicity verify $FILES $TIME --gpg-binary=$BIN --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY $URL $DIR
   ;;
   *)
+    # Run additional scripts before backup
+    if [ -n $EXEC_DIR ]; then
+      echo "Running additional scripts"
+      find $EXEC_DIR -maxdepth 1 -type f -executable -name '*.sh' -exec {} \; 2>&1 | tee -a $OUT
+    fi
+
     echo "Performing incremental backup"
     duplicity --gpg-binary=$BIN --allow-source-mismatch --asynchronous-upload --use-agent --encrypt-key=$GPG_ENCRYPT_KEY --sign-key=$GPG_SIGN_KEY --full-if-older-than 6M --exclude-filelist=${DIR}/.duplicity/exclude.lst $DIR $URL 2>&1 | tee -a $OUT
     echo "Removing old backups"
