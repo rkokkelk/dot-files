@@ -1,11 +1,10 @@
 #############
 # Variables #
 #############
-HISTFILE=$HOME/.zsh/zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-TERM='xterm-256color'
-PATH=$PATH:$HOME/.bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$HOME/.gem/ruby/2.4.0/bin
+export HISTFILE=$HOME/.zsh/zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+export PATH=$PATH:$HOME/.bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$HOME/.gem/ruby/2.4.0/bin
 
 export EDITOR=vim
 eval `dircolors -b`
