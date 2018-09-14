@@ -6,6 +6,9 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 export PATH=$PATH:$HOME/.bin:/opt/android-sdk/platform-tools:/opt/android-sdk/tools:$HOME/.gem/ruby/2.4.0/bin
 
+# Tmux plugin, auto start/attach to tmux session
+ZSH_TMUX_AUTOSTART=true
+
 export EDITOR=vim
 eval `dircolors -b`
 
