@@ -29,7 +29,7 @@ unsetopt beep
 # OH-MY-ZSH #
 #############
 export ZSH=$HOME/.oh-my-zsh
-plugins=(git pep8 pylint gpg-agent tmux command-not-found compleat zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git pep8 pylint gpg-agent tmux command-not-found docker pass pip python pylint supervisor compleat zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 #################
