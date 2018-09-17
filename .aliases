@@ -6,6 +6,7 @@ alias l='ls -lhaF --color=auto'
 
 # Sudo shortcuts
 alias iptables='sudo iptables'
+alias ip6tables='sudo ip6tables'
 alias ipset='sudo ipset'
 alias shutdown='sudo shutdown -hP 0'
 alias reboot='sudo reboot'
