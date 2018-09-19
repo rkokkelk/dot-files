@@ -1,6 +1,6 @@
 "Needed for pathogen plugin
-call pathogen#infect()
-call pathogen#helptags()
+"call pathogen#infect()
+"call pathogen#helptags()
 
 "Options
 set hidden
@@ -29,6 +29,26 @@ set t_Co=256
 set background=dark
 colors pablo
 
+" Plugins, done by plug
+call plug#begin()
+
+Plug 'tpope/vim-sensible'
+Plug 'mhinz/vim-grepper'
+Plug 'derekwyatt/vim-scala'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-syntastic/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/powerline'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+
+call plug#end()
+
+" Plugin configurations
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 "Tab settings
 set expandtab
 set tabstop=2     " a hard TAB displays as 4 columns
@@ -38,8 +58,15 @@ set softtabstop=2 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
 "Filetype plugin
 filetype plugin indent on
 autocmd filetype python set list
-autocmd fileType python set tabstop=4|set shiftwidth=4|set expandtab| set autoindent
 autocmd filetype python set listchars=tab:>.,trail:.,extends:#,nbsp:.
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
 
 "Custom file extensions
 au BufNewFile,BufRead *.jsm set filetype=javascript
