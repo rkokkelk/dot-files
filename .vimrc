@@ -29,11 +29,12 @@ set t_Co=256
 set background=dark
 colors pablo
 
+
 " Plugins, done by plug
 call plug#begin()
 
+Plug 'wsdjeg/FlyGrep.vim'
 Plug 'tpope/vim-sensible'
-Plug 'mhinz/vim-grepper'
 Plug 'derekwyatt/vim-scala'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-syntastic/syntastic'
@@ -80,6 +81,8 @@ map <C-l> <C-w>l
 
 map N :NERDTreeToggle<CR>
 map T :TagbarToggle<CR> 
+
+nnoremap <Space>s/ :FlyGrep<cr>
 
 augroup LargeFile
         let g:large_file = 10485760 " 10MB
