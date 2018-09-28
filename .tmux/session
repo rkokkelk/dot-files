@@ -1,4 +1,4 @@
-new  -s 'default' -n '0' 'zsh'
+new  -s 'default' 'zsh'
 neww -n chat -t 6 'irssi'
 neww -n mc -t 7 'mc'
 neww -n htop -t 8 'htop'
