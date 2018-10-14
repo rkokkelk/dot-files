@@ -8,11 +8,12 @@ TITLE="Backup-Desktop"
 
 function show_help {
   echo 'backup [-f] [-h] [-t] [-d] [clean|list|restore|verify]'
-  echo '-h :       Show this help'
-  echo '-f :       Specify files to use to restore'
-  echo '-t :       Specify time range to use, e.g. 1W 2M [list|restore]'
+  echo '-b :       Run in daemon mode, send Pushover notifications'
   echo '-d :       Specify target directory, default: restore_$timestamp$ [restore]'
+  echo '-f :       Specify files to use to restore'
+  echo '-h :       Show this help'
   echo '-m :       Backup Doortje directory'
+  echo '-t :       Specify time range to use, e.g. 1W 2M [list|restore]'
   echo ''
   echo 'restore :  Restore files from backup'
   echo 'full    :  Perfom full backup of all files'
