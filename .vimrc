@@ -60,14 +60,6 @@ set softtabstop=2 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
 filetype plugin indent on
 autocmd filetype python set list
 autocmd filetype python set listchars=tab:>.,trail:.,extends:#,nbsp:.
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
 
 "Custom file extensions
 au BufNewFile,BufRead *.jsm set filetype=javascript
