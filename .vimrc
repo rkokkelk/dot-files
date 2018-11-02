@@ -20,9 +20,11 @@ set noswapfile
 set pastetoggle=<F2>
 set ofu=syntaxcomplete#Complete
 
+" Change look and feel
 syntax enable
 set t_Co=256
 set background=dark
+set fillchars+=vert:\ 
 
 
 " Plugins, done by plug
@@ -42,7 +44,7 @@ Plug 'w0rp/ale'
 " Syntax and style checker for Python
 Plug 'nvie/vim-flake8'
 " Git support
-" 1) :Gdiff master 
+" 1) :Gdiff master
 Plug 'tpope/vim-fugitive'
 " CtrlP, fuzzy search tags/buffers/etc
 " 1) :CtrlP
