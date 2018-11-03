@@ -63,3 +63,6 @@ alias grep='grep --color=always'
 
 # Tmux
 alias tmux='$HOME/.tmux/default.sh'
+
+# PGP
+alias gpg-new-card='gpg-connect-agent "scd serialno" "learn --force" /bye'
