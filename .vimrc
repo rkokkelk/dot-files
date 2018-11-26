@@ -29,6 +29,8 @@ set fillchars+=vert:\
 "" Map leader to ,
 let mapleader=','
 
+" Automatically source vimrc on save.
+autocmd! bufwritepost $MYVIMRC source $MYVIMRC
 
 " Plugins, done by plug
 call plug#begin()
