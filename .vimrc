@@ -26,6 +26,9 @@ set t_Co=256
 set background=dark
 set fillchars+=vert:\ 
 
+"" Map leader to ,
+let mapleader=','
+
 
 " Plugins, done by plug
 call plug#begin()
@@ -34,25 +37,47 @@ call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-sensible'
+set laststatus=2
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme='angr'
+
 " Support for scala
 Plug 'derekwyatt/vim-scala'
+
 " Display filestructure
 " 1) :Nerdtree
 Plug 'scrooloose/nerdtree'
+
 " Asynchrous syntax verification
 Plug 'w0rp/ale'
+" ALE Airline enabling
+let g:airline#extensions#ale#enabled = 1
+
 " Syntax and style checker for Python
 Plug 'nvie/vim-flake8'
+
 " Git support
 " 1) :Gdiff master
 Plug 'tpope/vim-fugitive'
+noremap <Leader>gs :Gstatus<CR>
+noremap <Leader>gd :Gvdiff<CR>
+
+" Git gutter
+Plug 'airblade/vim-gitgutter'
+
 " CtrlP, fuzzy search tags/buffers/etc
-" 1) :CtrlP
-Plug 'ctrlpvim/ctrlp.vim'
+" 1) :Files, :Commits, :AG
+Plug 'junegunn/fzf.vim'
+nnoremap <c-p> :Files<CR>
+nnoremap <c-l> :Ag<CR>
+
 " Automatic indentation of Python
 Plug 'vim-scripts/indentpython.vim'
+
 " Autocompletion support
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+
 " Formatting code
 " 1) :Neoformat jsbeautify
 " 2) :Neoformat! python
@@ -64,13 +89,7 @@ call plug#end()
 let g:ycm_autoclose_preview_window_after_completion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" Default behavior for CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 " Set airline configuration
-set laststatus=2
-let g:airline_powerline_fonts = 1
-let g:airline_theme='angr'
 
 "Tab settings
 set expandtab
