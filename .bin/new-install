@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Install files
-MIN_INSTALL="htop mc iotop python3 terminator vim zsh"
+MIN_INSTALL="htop mc iotop vim zsh tmux"
+GUI_INSTALL="terminator"
 SMARTCARD_INSTALL="pcsclite pinentry ccid pcsc-tools scdaemon"
 
 function show_help {
