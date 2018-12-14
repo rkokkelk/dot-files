@@ -36,11 +36,12 @@ call plug#begin()
 " Power line module inc themes
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-sensible'
-set laststatus=2
-
+" Configure powerline
 let g:airline_powerline_fonts = 1
 let g:airline_theme='angr'
+
+Plug 'tpope/vim-sensible'
+set laststatus=2
 
 " Support for scala
 Plug 'derekwyatt/vim-scala'
@@ -53,6 +54,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 " ALE Airline enabling
 let g:airline#extensions#ale#enabled = 1
+" Set autocompletion to include ale
+let g:ale_completion_enabled = 1
+" Configure lints
+let g:ale_python_pylint_options = '-d C0103,C0111,C0301,R0914,W0603'
 
 " Syntax and style checker for Python
 Plug 'nvie/vim-flake8'
