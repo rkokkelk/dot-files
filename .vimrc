@@ -123,3 +123,9 @@ nnoremap j gj
 nnoremap k gk
 " Clear search
 nmap <silent> ,/ :nohlsearch<CR>
+
+" Watch for changes in config file
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
