@@ -80,13 +80,13 @@ nnoremap <c-l> :Ag<CR>
 " Automatic indentation of Python
 Plug 'vim-scripts/indentpython.vim'
 
-" Autocompletion support
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-
 " Formatting code
 " 1) :Neoformat jsbeautify
 " 2) :Neoformat! python
 Plug 'sbdchd/neoformat'
+
+" Autocomplete plugin
+Plug 'ajh17/VimCompletesMe'
 
 call plug#end()
 
