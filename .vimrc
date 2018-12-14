@@ -56,7 +56,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 " ALE Airline enabling
 let g:airline#extensions#ale#enabled = 1
-" Set autocompletion to include ale
+" Set autocompletion to include ALE
 let g:ale_completion_enabled = 1
 " Configure lints
 let g:ale_python_pylint_options = '-d C0103,C0111,C0301,R0914,W0603'
@@ -92,12 +92,6 @@ Plug 'ajh17/VimCompletesMe'
 
 call plug#end()
 
-" Plugin configurations
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" Set airline configuration
-
 "Tab settings
 set expandtab
 set tabstop=2     " a hard TAB displays as 4 columns
@@ -125,9 +119,3 @@ nnoremap j gj
 nnoremap k gk
 " Clear search
 nmap <silent> ,/ :nohlsearch<CR>
-
-" Watch for changes in config file
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
