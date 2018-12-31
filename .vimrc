@@ -60,6 +60,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_completion_enabled = 1
 " Configure lints
 let g:ale_python_pylint_options = '-d C0103,C0111,C0301,R0914,W0603'
+let g:ale_python_pylint_change_directory=0
 
 " Syntax and style checker for Python
 Plug 'nvie/vim-flake8'
