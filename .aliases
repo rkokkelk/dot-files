@@ -64,5 +64,8 @@ alias grep='grep --color=always'
 # Tmux
 alias tmux='$HOME/.tmux/default.sh'
 
+# Shred
+alias srm='shred -n 7 -u'
+
 # PGP
 alias gpg-new-card='gpg-connect-agent "scd serialno" "learn --force" /bye'
