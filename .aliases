@@ -18,13 +18,13 @@ alias screen='screen -D -R'
 alias t='$HOME/.todo/todo.sh'
 
 # Package manager
-alias pac-install='sudo pacman -S'
-alias pac-remove='sudo pacman -Rns'
-alias pac-remove-all='sudo pacman -Rscn' 
-alias pac-update='sudo pacman -Syu'
-alias pac-search='pacman -Ss'
-alias pac-show='pacman -Si'
-alias pac-clean='sudo pacman -Sc'
+alias pac-install='sudo pacman --color=always -S'
+alias pac-remove='sudo pacman --color=always -Rns'
+alias pac-remove-all='sudo pacman --color=always -Rscn'
+alias pac-update='sudo pacman --color=always -Syu'
+alias pac-search='pacman --color=always -Ss'
+alias pac-show='pacman --color=always -Si'
+alias pac-clean='sudo pacman --color=always -Sc'
 
 # Yaourt Package manager
 alias yao-install='yaourt -S --noconfirm'
