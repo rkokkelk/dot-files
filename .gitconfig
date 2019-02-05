@@ -19,3 +19,5 @@
   lgf = !"git lg -p"
 [gpg]
 	program = gpg2
+[merge]
+	tool = meld
