@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 import os
 import urllib2
 
@@ -22,17 +22,31 @@ def collect_system_keys():
     return [key.strip() for key in system_keys if key.strip()]
 
 def main():
+    messages = list()
     if not os.path.isfile(AUTHOR_KEY):
         exit(0)
 
     system_keys = collect_system_keys()
-    for key in collect_gh_keys():
-        if key not in system_keys:
-            print YELLOW+"Github key not found in authorized_keys"+RESET
+    for i, key in enumerate(collect_gh_keys()):
+
+        if not any([key in system_key for system_key in system_keys]):
+          messages.append(YELLOW+"Github key_"+str(i)+" not found in authorized_keys, appending key!"+RESET)
+
+          with open(AUTHOR_KEY, 'a') as f:
+            f.write(key + " key"+str(i)+"@github.com\n")
 
     for key, value in old_keys.items():
-        if key in system_keys:
-            print RED+"Old key ("+value+") still listed in authorized_keys"+RESET
+        if any([key in system_key for system_key in system_keys]):
+            messages.append(RED+"Old key ("+value+") still listed in authorized_keys"+RESET)
+
+    if not messages:
+        exit()
+
+    print ""
+    print "SSH authorized key checks: "
+    for message in messages:
+        print "[+] "+message
+
 
 if __name__ == "__main__":
     main()
