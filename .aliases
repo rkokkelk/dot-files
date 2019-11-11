@@ -25,6 +25,7 @@ alias pac-update='sudo pacman --color=always -Syu'
 alias pac-search='pacman --color=always -Ss'
 alias pac-show='pacman --color=always -Si'
 alias pac-clean='sudo pacman --color=always -Sc'
+alias pac-list='pacman -Q'
 
 # Yaourt Package manager
 alias yao-install='yaourt -S --noconfirm'
