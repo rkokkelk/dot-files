@@ -76,6 +76,7 @@ Plug 'airblade/vim-gitgutter'
 
 " CtrlP, fuzzy search tags/buffers/etc
 " 1) :Files, :Commits, :AG
+Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
 Plug 'junegunn/fzf.vim'
 nnoremap <c-p> :Files<CR>
 nnoremap <c-l> :Ag<CR>
