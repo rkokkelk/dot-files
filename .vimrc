@@ -122,6 +122,12 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+" Change window close to X
+map <Leader>x <C-w>q
+" Add mapping for reindenting file
+map <F7> gg=G<C-o><C-o>
+" Add mapping for quick writing file
+map <Leader>w :w<CR>
 " Change default behavior to 'natural' next line jump
 nnoremap j gj
 nnoremap k gk
