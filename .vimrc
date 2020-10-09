@@ -74,6 +74,12 @@ noremap <Leader>gd :Gvdiff<CR>
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
+" Ruby / Rails support
+Plug 'tpope/vim-rails'
+
+" Plugin for ending for/ do loop, etc
+Plug 'tpope/vim-endwise'
+
 " CtrlP, fuzzy search tags/buffers/etc
 " 1) :Files, :Commits, :AG
 Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
