@@ -1,6 +1,6 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 import os
-import urllib2
+from urllib import request
 
 RED="\x1b[0;31m"
 YELLOW="\x1b[0;33m"
@@ -13,7 +13,7 @@ old_keys = {
 }
 
 def collect_gh_keys():
-    ssh_keys = urllib2.urlopen("https://github.com/rkokkelk.keys").read()
+    ssh_keys = request.urlopen("https://github.com/rkokkelk.keys").read()
     return [key.strip() for key in ssh_keys.split("\n") if key.strip()]
 
 def collect_system_keys():
@@ -43,10 +43,9 @@ def main():
     if not messages:
         exit()
 
-    print ""
-    print "SSH authorized key checks: "
+    print("\nSSH authorized key checks: ")
     for message in messages:
-        print "[+] "+message
+        print("[+] "+message)
 
 
 if __name__ == "__main__":
