@@ -77,6 +77,9 @@ Plug 'airblade/vim-gitgutter'
 " Ruby / Rails support
 Plug 'tpope/vim-rails'
 
+" Ansible support
+Plug 'pearofducks/ansible-vim'
+
 " Plugin for ending for/ do loop, etc
 Plug 'tpope/vim-endwise'
 
