@@ -105,9 +105,9 @@ call plug#end()
 
 "Tab settings
 set expandtab
-set tabstop=2     " a hard TAB displays as 4 columns
-set shiftwidth=2  " operation >> indents 4 columns; << unindents 4 columns
-set softtabstop=2 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
+set tabstop=4     " a hard TAB displays as 4 columns
+set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
+set softtabstop=4 " insert/delete 4 spaces when hitting a TAB/BACKSPACE
 
 "Filetype plugin
 filetype plugin indent on
@@ -131,6 +131,7 @@ map <Leader>x <C-w>q
 map <F7> gg=G<C-o><C-o>
 " Add mapping for quick writing file
 map <Leader>w :w<CR>
+map <Leader>ft :retab! 4<CR>
 " Change default behavior to 'natural' next line jump
 nnoremap j gj
 nnoremap k gk
