@@ -42,10 +42,10 @@ setopt correct
 SSH_FORWARD=$(ls /tmp/ssh-*/agent* 2>/dev/null)
 
 unset SSH_AGENT_PID
-if [ -S "/run/user/$UID/gnupg/S.gpg-agent.ssh" ]; then
-  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-elif [ ! -z $SSH_FORWARD ]; then
+if [ ! -z $SSH_FORWARD ]; then
   export SSH_AUTH_SOCK=$SSH_FORWARD
+elif [ -S "/run/user/$UID/gnupg/S.gpg-agent.ssh" ]; then
+  export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 else
   export SSH_AUTH_SOCK=$HOME/.gnupg/S.gpg-agent.ssh
 fi
