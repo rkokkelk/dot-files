@@ -3,7 +3,7 @@
 # Install files
 MIN_INSTALL="htop mc iotop vim zsh tmux"
 GUI_INSTALL="terminator"
-SMARTCARD_INSTALL="pcsclite pinentry ccid pcsc-tools scdaemon"
+SMARTCARD_INSTALL="pcsc-tools pinentry-gtk2 scdaemon"
 
 function show_help {
   echo 'new-install [smartcard]'
