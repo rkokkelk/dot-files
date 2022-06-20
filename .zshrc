@@ -291,5 +291,3 @@ exip () {
     curl -s -m 5 http://myip.dk | grep "ha4" | sed -e 's/.*ha4">//g' -e 's/<\/span>.*//g'
 }
 
-# Run GPG check-key script in background
-( ~/.bin/check-keys &)
