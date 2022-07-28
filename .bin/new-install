@@ -1,22 +1,11 @@
 #!/bin/bash
 
-# Install files
-MIN_INSTALL="htop mc iotop vim zsh tmux"
-GUI_INSTALL="terminator"
-SMARTCARD_INSTALL="pcsc-tools pinentry-gtk2 scdaemon"
-
-function show_help {
-  echo 'new-install [smartcard]'
-  echo '-h :       Show this help'
-  echo ''
-  echo 'smartcard :  Install required packages for PGP smartcard and U2F functionality'
-}
-
-if [ "$(id -u)" != "0" ]
-then
-  echo "[WARN] Not root user!"
-  exit 1
-fi
+#
+#if [ "$(id -u)" != "0" ]
+#then
+#  echo "[WARN] Not root user!"
+#  exit 1
+#fi
 
 while getopts "h" opt; do
   case $opt in
@@ -46,12 +35,19 @@ then
   P_MANAGER="/usr/bin/yum install"
 fi
 
-case ${@: -1} in
-  "smartcard")
-    $P_MANAGER $SMARTCARD_INSTALL
-    ;;
-  *)
-    $P_MANAGER $MIN_INSTALL
-    ;;
-esac
+echo "Installing ansible"
+$P_MANAGER ansible
+
+# Get playbook
+echo "Downloading playbook"
+curl -Lq -o /tmp/dot-files.tar.gz https://github.com/rkokkelk/dot-files/archive/master.tar.gz
+tar -xvf /tmp/dot-files.tar.gz  -C /tmp/ && cd /tmp/dot-files-master/.playbook
+
+# Running ansible
+echo "Starting Ansible"
+ansible-playbook --ask-become new.yaml
+
+echo "Removing temp playbook file"
+rm -rf /tmp/dot-files-master
+
 exit 0
