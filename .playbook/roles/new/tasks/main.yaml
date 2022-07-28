@@ -1,0 +1,43 @@
+- name: Install dependencies
+  become: true
+  apt:
+    name: "{{ apt_packages }}"
+    update_cache: true
+  tags:
+    - sudo
+
+- name: Import GPG keys
+  include_tasks: gpg.yaml
+  tags:
+    - gpg
+
+- name: Include git tasks
+  include_tasks: git.yaml
+  tags:
+    - git
+
+- name: Set shell to ZSH
+  become: true
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: /usr/bin/zsh
+  tags:
+    - sudo
+
+- name: Include SSH auth
+  include_tasks: auth.yaml
+  tags:
+    - sudo
+
+- name: Add Flathub remote to Flatpak
+  become: true
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+- name: Install flat packages
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ flat_packages }}"

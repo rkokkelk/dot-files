@@ -1,0 +1,24 @@
+- name: set sudo authorized SSH key
+  become: true
+  get_url:
+    url: https://github.com/rkokkelk.keys
+    dest: /etc/ssh/sudo_authorized_keys
+    owner: root
+    group: root
+    mode: 0640
+
+- name: configure pam-ssh-agent sudo access
+  become: true
+  lineinfile:
+    path: /etc/pam.d/sudo
+    line: "auth [success=3 default=ignore] pam_ssh_agent_auth.so file=/etc/ssh/sudo_authorized_keys"
+    insertbefore: "@include common-auth"
+    regexp: '.*pam_ssh_agent.auth.so.*'
+
+- name: configure sudoers SSH_AUTH_SOCK
+  become: true
+  lineinfile:
+    path: /etc/sudoers
+    line: 'Defaults        env_keep += "SSH_AUTH_SOCK"'
+    insertafter: "Defaults        mail_badpass"
+    regexp: '.*SSH_AUTH_SOCK*'

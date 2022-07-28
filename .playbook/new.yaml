@@ -1,0 +1,6 @@
+- name: Configuring current host
+  hosts: localhost
+  connection: local
+
+  roles:
+    - new

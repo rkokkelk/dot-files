@@ -1,0 +1,15 @@
+apt_packages:
+  - htop
+  - mc
+  - iotop
+  - vim
+  - zsh
+  - tmux
+  - pcsc-tools
+  - scdaemon
+  - gnupg2
+  - pinentry-gtk2
+  - libpam-ssh-agent-auth
+
+flat_packages:
+  - com.yubico.yubioath
