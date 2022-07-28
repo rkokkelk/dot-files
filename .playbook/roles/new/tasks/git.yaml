@@ -1,0 +1,35 @@
+- name: Verify dot-file repo
+  stat:
+    path: "{{ ansible_env.HOME }}/.git"
+  register: dotfiles
+
+- name: Deploy dot-files repo
+  git:
+    repo: https://github.com/rkokkelk/dot-files.git
+    dest: "{{ ansible_env.HOME }}/dot-files"
+    verify_commit: true
+  when: not dotfiles.stat.exists
+  notify:
+    - move dotfiles
+
+- name: Update dot-files repo
+  git:
+    repo: https://github.com/rkokkelk/dot-files.git
+    dest: "{{ ansible_env.HOME }}"
+    verify_commit: true
+    update: true
+  when: dotfiles.stat.exists
+  notify:
+    - update vim
+
+- name: Install ZSH syntax highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+    update: true
+
+- name: Install ZSH autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    update: true

@@ -1,0 +1,13 @@
+- name: update vim
+  shell: vim +PlugInstall +PlugUpdate +qall
+
+- name: move dotfiles
+  synchronize:
+    mode: pull
+    src: "{{ ansible_env.HOME }}/dot-files/"
+    dest: "{{ ansible_env.HOME }}/"
+    rsync_opts:
+    - "--remove-source-files"
+  notify:
+    - update vim
+
