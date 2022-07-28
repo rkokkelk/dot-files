@@ -21,3 +21,5 @@
 	program = gpg2
 [merge]
 	tool = meld
+[pull]
+    rebase=false
