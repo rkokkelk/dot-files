@@ -18,6 +18,7 @@
     dest: "{{ ansible_env.HOME }}"
     verify_commit: true
     update: true
+    force: true
   when: dotfiles.stat.exists
   notify:
     - update vim
