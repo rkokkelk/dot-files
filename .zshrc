@@ -39,7 +39,7 @@ setopt correct
 #################
 # GPG/SSH Agent #
 #################
-SSH_FORWARD=$(ls /tmp/ssh-*/agent* 2>/dev/null)
+SSH_FORWARD=$(ls -1t /tmp/ssh-*/agent* | head -n 1 2>/dev/null)
 
 unset SSH_AGENT_PID
 if [ ! -z $SSH_FORWARD ]; then
