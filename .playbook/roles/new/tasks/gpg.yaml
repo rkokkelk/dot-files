@@ -1,2 +1,8 @@
 - name: Import key
   shell: "gpg --keyserver pgp.surfnet.nl --recv-keys 0x3a4f45ef7064db109c78ee097c86fb84456fa287"
+
+- name: Enable pcscd daemon
+  service:
+    name: pcscd
+    enabled: true
+    state: started
