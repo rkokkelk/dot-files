@@ -36,7 +36,7 @@ then
 fi
 
 echo "Installing ansible"
-$P_MANAGER ansible
+sudo $P_MANAGER ansible
 
 # Get playbook
 echo "Downloading playbook"
