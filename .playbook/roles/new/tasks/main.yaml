@@ -1,3 +1,7 @@
+- name: Gather the package facts
+  ansible.builtin.package_facts:
+    manager: auto
+
 - name: Install dependencies
   become: true
   apt:
@@ -35,9 +39,11 @@
     name: flathub
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+  when: "'flatpak' in ansible_facts.packages"
 
 - name: Install flat packages
   community.general.flatpak:
     name: "{{ item }}"
     state: present
   with_items: "{{ flat_packages }}"
+  when: "'flatpak' in ansible_facts.packages"
