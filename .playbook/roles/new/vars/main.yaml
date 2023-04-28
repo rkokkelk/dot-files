@@ -19,3 +19,4 @@ flat_packages:
   - org.mozilla.Thunderbird
   - com.spotify.Client
   - com.github.tchx84.Flatseal
+  - com.bitwarden.desktop
