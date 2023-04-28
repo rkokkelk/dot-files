@@ -10,6 +10,17 @@
   tags:
     - sudo
 
+- name: Update all packages to their latest version
+  become: true
+  ansible.builtin.apt:
+    name: "*"
+    state: latest
+    autoclean: true
+    autoremove: true
+  tags:
+    - sudo
+
+
 - name: Import GPG keys
   include_tasks: gpg.yaml
   tags:
