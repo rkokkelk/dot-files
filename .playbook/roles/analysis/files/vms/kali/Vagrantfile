@@ -1,0 +1,13 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "kali"
+  config.vm.box = "kalilinux/rolling"
+
+  config.vm.provider "virtualbox" do |vb|
+	vb.name = "Kali"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "../../../../../new.yaml"
+    ansible.skip_tags = ["auth", "flatpak", "gpg"]
+  end
+end

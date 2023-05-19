@@ -1,0 +1,16 @@
+apt_packages:
+  - vagrant
+  - vagrant-lxc
+  - virtualbox
+  - virtualbox-guest-additions-iso
+  - virtualbox-dkms
+
+vagrant_plugins:
+  - winrm
+  - winrm-fs
+  - winrm-elevated
+
+
+vms:
+  - flarevm
+  - kali

@@ -1,0 +1,37 @@
+- name: "Download FlareVM powershell"
+  get_url:
+    url: https://raw.githubusercontent.com/mandiant/flare-vm/main/install.ps1
+    dest: "{{ role_path+'/files/vms/'+ item + '/install.ps1' }}"
+  when: item == 'flarevm'
+
+- name: "Start up Vagrant {{ item }} Machine [pre-provisioning]"
+  command:
+    chdir: "{{ role_path+'/files/vms/'+item }}"
+    cmd: "vagrant up --no-provision"
+
+- name: "Open site for disabling tamper protection"
+  command:
+    cmd: xdg-open https://github.com/mandiant/flare-vm#installation
+  when: item == 'flarevm'
+
+- name: "Wait for confirmation, tamper protection has been disabled"
+  pause:
+    prompt: "Wait for confirmation tamper protection! [press enter]"
+  when: item == 'flarevm'
+
+- name: "Create {{ item }} VM pre-provision snapshot"
+  command:
+    chdir: "{{ role_path+'/files/vms/'+item }}"
+    cmd: "vagrant snapshot save '{{item}} [pre-provision]'"
+  ignore_errors: True
+
+- name: "Provision {{ item }} VM"
+  command:
+    chdir: "{{ role_path+'/files/vms/'+item }}"
+    cmd: "vagrant provision {{ item }}"
+
+- name: "Create {{ item }} VM post-provision snapshot"
+  command:
+    chdir: "{{ role_path+'/files/vms/'+item }}"
+    cmd: "vagrant snapshot save '{{item}} [post-provision]'"
+  ignore_errors: True

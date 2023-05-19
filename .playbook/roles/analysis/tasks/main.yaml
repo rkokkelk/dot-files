@@ -1,0 +1,23 @@
+- name: Install dependencies
+  become: true
+  apt:
+    name: "{{ apt_packages }}"
+    update_cache: true
+  tags:
+    - sudo
+
+- name: Install Vagrant plugins
+  command:
+    cmd: "vagrant plugin install {{ item }}"
+  with_items: "{{ vagrant_plugins }}"
+
+
+- name: Deploy Virtual Machines
+  include_tasks: deploy_vm.yaml
+  args:
+    apply:
+      tags: vms
+  loop: "{{ vms }}"
+  when: ('all_vms' in ansible_run_tags or item in ansible_run_tags)
+  tags:
+    - vms
