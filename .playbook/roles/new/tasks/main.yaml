@@ -43,6 +43,7 @@
   include_tasks: auth.yaml
   tags:
     - sudo
+    - auth
 
 - name: Add Flathub remote to Flatpak
   become: true
@@ -51,6 +52,8 @@
     state: present
     flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
   when: "'flatpak' in ansible_facts.packages"
+  tags: 
+    - flatpak
 
 - name: Install flat packages
   community.general.flatpak:
@@ -59,3 +62,5 @@
     method: user
   with_items: "{{ flat_packages }}"
   when: "'flatpak' in ansible_facts.packages"
+  tags:
+    - flatpak
